@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/file.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>File: <%= title %> </title>
+
+</head>
+<body>
+    <%/*##############*****main content box for the page******####################*/%>
+    <div class="content">
+        
+        <div class="nav-container">
+            <%/*##############*****back to home button******####################*/%>
+            <div class="back-btn">
+                <a href="/">Home</a>
+            </div>
+            <div id="search-box">
+                <input type="text" name="search" id="search" class="search" placeholder="Search Here....." />
+                
+                <div class="select-box">
+                    <span>Search Using</span>
+                    <select name="option" id="opt">
+                        <% for(let i=0; i<head.length; i++) { %> 
+                            <option value="<%= i %>"><%= head[i] %></option>
+                        <%}%>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <%/*##############*****create table for the data******####################*/%>
+        <table id="table" border="1" class="table">
+            <thead>
+                <tr>
+                    <% for(let i=0; i<head.length; i++) { %> 
+                        <td> <%= head[i] %></td>
+                    <% } %>
+                </tr>
+            </thead>
+            <tbody>
+                
+                    <% for(let i=1; i<data.length; i++) { %> 
+                        <tr>
+                        <% for(let j=0; j<head.length; j++) { %>
+                            <td><%= data[i][head[j]] %></td>
+                        <% } %>
+                    </tr>
+                    <% } %>
+            </tbody>
+        </table>
+
+    </div>
+
+    <script>
+
+        //remove selected 
+        function removeHighlighting(highlightedElements) {
+            highlightedElements.each(function() {
+                var element = $(this);
+                element.replaceWith(element.html());
+            })
+        }
+
+        //adding selected
+        function addHighlighting(element, textToHighlight) {
+            var text = element.text();
+            var highlightedText = '<em>' + textToHighlight + '</em>';
+            var newText = text.replace(textToHighlight, highlightedText);
+
+            element.html(newText);
+        }
+
+        //get the value from select tag
+        function getValue(){
+            return $("#opt :selected").val();
+        }
+
+        //search and match the value
+        $("#search").on("keyup", function(){
+            var value = $(this).val().toUpperCase();
+            var searchValue = getValue();
+
+            $("table tr").each(function(index) {
+                if(index != 0) {
+                    $row = $(this);
+                    var $tdElement = $row.find(`td:nth-child(${eval(searchValue+"+"+1)}`);
+                    var id = $tdElement.text().toUpperCase();
+                    var matchedIndex = id.indexOf(value);
+                    if(matchedIndex < 0) {
+                        $row.hide();
+                    }else {
+                        addHighlighting($tdElement, value);
+                        $row.show();
+                    }
+                }
+            })
+        })
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+/*##############*****container with home button and search bar******####################*/
+.nav-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 50px; 
+    margin-top: 20px;
+}
+
+/*##############******home button sttling*****####################*/
+.back-btn a {
+    font-size: 20px;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+    background: #009879;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+/*##############******search box container css******####################*/
+#search-box {
+    width: 100%;
+    max-width: 700px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 60px;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+#search-box input {
+    background: transparent;
+    outline: none;
+    padding: 8px 10px;
+    border-radius:  8px;
+    font-size: 20px;
+    width: 300px;
+}
+
+#search-box input:focus {
+    border: 2px solid #009879;
+}
+
+/*##############******text in span*****####################*/
+#search-box span {
+    margin-left: 8px;
+    font-size: 20px;
+}
+
+/*##############*****css for select tag******####################*/
+#search-box select {
+    margin-left: 10px;
+    font-size: 20px;
+    border: 1px solid #333333;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 1px 10px;
+    color: #333333;
+    width: 200px;
+}
+
+#search-box select:focus,
+#search-box select:hover {
+    outline: none;
+    border: 1px solid #bbbbbb;
+}
+
+.select-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333333;
+    background-color: #eeeeee;
+    border: 1px solid #dddddd;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 8px 20px;
+}
+
+/*##############******css to style table content*****####################*/
+.table {
+    width: 100%;
+}
+
+.table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+}
+
+.table th,
+.table td {
+    padding: 12px 15px;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.table tbody tr td a {
+    outline: none;
+    text-decoration: none;
+    font-size: 20px;
+}

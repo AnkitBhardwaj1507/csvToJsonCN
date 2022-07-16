@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="https://kit.fontawesome.com/44c6087d03.js" crossorigin="anonymous"></script>
+
+    <title>Files</title>
+</head>
+<body>
+    <div class="container">
+        <%/*##############******form container*****####################*/%>
+        <form class="file-input" action="/file" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" class="file" required />
+            <input type="submit" name="submit" id="sub-button" value="Submit">
+        </form>
+
+        <div class="file-list ">
+            <% if(file.length > 0) { %> 
+                <%/*##############*****create table to show all files******####################*/%>
+                <table border="1" class="home-table">
+                    <thead>
+                        <tr>
+                            <td>Id</td>
+                            <td>File Name</td>
+                            <td>Action</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(let [index, f] of file.entries()) { %>
+                            <tr>
+                                <td><%= index+1 %></td>
+                                <td><a href="/file/view/<%= f.file %>"> <%= f.originalName %></a></td>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <td><a href="file/delete/<%= f.file %>"<i class="far fa-times-circle delete-icon"</i></i></a></td>
+                            </tr>
+                        <% } %>
+                        
+                    </tbody>
+                </table>
+            <% } else { %> 
+                <h2> No File to display!!!!</h2>    
+            <% } %>   
+            
+        </div>
+    </div>
+</body>
+</html>
